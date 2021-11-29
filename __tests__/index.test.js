@@ -1,5 +1,5 @@
 import {
-  isPalindrome, apply, flip, magic, PseudoRandom, isValid
+  isPalindrome, apply, flip, magic, PseudoRandom, isValid, twoSum
 } from '../index';
 
 test('isPalindrome', () => {
@@ -109,6 +109,15 @@ test.each(correctParentheses)('isValid: true', (item) => {
 test.each(incorrectParentheses)('isValid: false', (item) => {
   expect(isValid(item)).toBe(false);
 });
+
+test('twoSum', () => {
+  const array = [2,7,11,15];
+  const target = 9
+  const result = [1,0];
+
+  expect(twoSum(array,target)).toEqual(result)
+});
+
 
 
 

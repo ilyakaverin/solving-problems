@@ -42,6 +42,7 @@ export class PseudoRandom {
     this.seed = this.init
   }
 } // LCPRNG 
+
 export const isValid = (s) => {
     
   const open = ['(','{','['];
@@ -61,4 +62,15 @@ export const isValid = (s) => {
       }
   }
   return stack.length === 0
-};
+}; // valid parentheses
+
+export const twoSum = (array,target) => {
+  const map = {};
+  const result = [];
+  array.map((num, index) => {
+map[target - num] >= 0 ? result
+.push(index, map[target - num]) : map[num] = index
+
+  })
+  return result
+} 
