@@ -90,3 +90,58 @@ export const maxSubArray = (nums) => {
   }
   return max
 }; // Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+// Redux implementation
+
+const initialState = {
+  count: 0,
+  name: 'ilya kaverin'
+}
+
+//reducer
+const updateState = (state, action) => {
+  if (action.type === "plus") {
+    return {
+      ...state,
+      count: state.count + action.amount};
+  } else if (action.type === "minus") {
+    return {
+      ...state,
+      count: state.count - action.amount};
+  } else {
+    return state;
+  }
+};
+class Store {
+  constructor(updateState, state) {
+    this.updateState = updateState;
+    this.state = state;
+    this.callbacks = []
+  }
+  getState() {
+    return this.state
+  }
+  dispatch = (action) => {
+     this.state = this.updateState(this.state, action);
+     this.callbacks.forEach(cb => cb())
+  }
+  subscribe(callback) {
+    this.callbacks.push(callback)
+  }
+}
+
+const store = new Store(updateState, initialState);
+const { dispatch } = store;
+store.subscribe(() => console.log(store.getState()))
+
+// actions
+const plusAction = (amount) => ({type: 'plus', amount});
+const minusAction = (amount) => ({type: 'minus', amount});
+
+const partialApply = (action, dispatch) => (...args) => {
+  dispatch(action(...args))
+}
+
+const plus = partialApply(plusAction, dispatch);
+const minus = partialApply(minusAction, dispatch);
+
