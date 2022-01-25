@@ -145,3 +145,22 @@ const partialApply = (action, dispatch) => (...args) => {
 const plus = partialApply(plusAction, dispatch);
 const minus = partialApply(minusAction, dispatch);
 
+// sum of two minimal numbers in array, O(n) complexity
+
+export const minimal = (array) => {
+  if(array.length < 2) {
+    return 'small collection'
+  }
+  let min = array[0];
+  let min2 = array[1];
+
+  for(let i = 2; i < array.length; i += 1) {
+    if(array[i] < min) {
+      min2 = min;
+      min = array[i]
+    } else if(array[i] < min2) {
+      min2 = array[i]
+    }
+  }
+  return min + min2
+}

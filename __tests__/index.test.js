@@ -1,5 +1,5 @@
 import {
-  isPalindrome, apply, flip, magic, PseudoRandom, isValid, twoSum, maxSubArray 
+  isPalindrome, apply, flip, magic, PseudoRandom, isValid, twoSum, maxSubArray, minimal
 } from '../index';
 
 test('isPalindrome', () => {
@@ -123,6 +123,16 @@ expect(maxSubArray([1])).toEqual(1)
 expect(maxSubArray([5,4,-1,7,8])).toEqual(23)
 
 })
+test('sum of two minimal numbers in array', () => {
+  expect(minimal([-2,1,-3,4,-1,2,1,-5,4])).toEqual(-8);
+  expect(minimal([1])).toEqual('small collection')
+  expect(minimal([1,2,3,4,5])).toEqual(3)
+  expect(minimal([5,4,3,2,1])).toEqual(3)
+  expect(minimal([7,7,7,7,7,0])).toEqual(7)
+  expect(minimal([25,32,47,1,3,0.2,1])).toEqual(1.2)
+  expect(minimal([25,32,47,1,3,0.2,1,'string'])).toEqual(1.2)
+  
+  })
 
 
 
