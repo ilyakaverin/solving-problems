@@ -1,6 +1,8 @@
 import {
-  isPalindrome, apply, flip, magic, PseudoRandom, isValid, twoSum, maxSubArray, minimal
+  isPalindrome, apply, flip, magic, PseudoRandom, isValid, twoSum, maxSubArray, minimal,
 } from '../index';
+import  lastWordLength  from '../Arrays/last-word-length';
+import  compareVersion  from '../Arrays/compare-semver';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -100,8 +102,8 @@ test('reset', () => {
   expect(result2).toBe(result22);
 });
 
-const correctParentheses = ['(())', '{}','[[]]'];
-const incorrectParentheses = ['{{]', '[[[]]]][[[[]]]','{{{}}}}}}']
+const correctParentheses = ['(())', '{}', '[[]]'];
+const incorrectParentheses = ['{{]', '[[[]]]][[[[]]]', '{{{}}}}}}'];
 
 test.each(correctParentheses)('isValid: true', (item) => {
   expect(isValid(item)).toBe(true);
@@ -111,30 +113,37 @@ test.each(incorrectParentheses)('isValid: false', (item) => {
 });
 
 test('twoSum', () => {
-  const array = [2,7,11,15];
-  const target = 9
-  const result = [1,0];
+  const array = [2, 7, 11, 15];
+  const target = 9;
+  const result = [1, 0];
 
-  expect(twoSum(array,target)).toEqual(result)
+  expect(twoSum(array, target)).toEqual(result);
 });
 test('maxSubArray', () => {
-expect(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])).toEqual(6);
-expect(maxSubArray([1])).toEqual(1)
-expect(maxSubArray([5,4,-1,7,8])).toEqual(23)
-
-})
+  expect(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])).toEqual(6);
+  expect(maxSubArray([1])).toEqual(1);
+  expect(maxSubArray([5, 4, -1, 7, 8])).toEqual(23);
+});
 test('sum of two minimal numbers in array', () => {
-  expect(minimal([-2,1,-3,4,-1,2,1,-5,4])).toEqual(-8);
-  expect(minimal([1])).toEqual('small collection')
-  expect(minimal([1,2,3,4,5])).toEqual(3)
-  expect(minimal([5,4,3,2,1])).toEqual(3)
-  expect(minimal([7,7,7,7,7,0])).toEqual(7)
-  expect(minimal([25,32,47,1,3,0.2,1])).toEqual(1.2)
-  expect(minimal([25,32,47,1,3,0.2,1,'string'])).toEqual(1.2)
-  
-  })
+  expect(minimal([-2, 1, -3, 4, -1, 2, 1, -5, 4])).toEqual(-8);
+  expect(minimal([1])).toEqual('small collection');
+  expect(minimal([1, 2, 3, 4, 5])).toEqual(3);
+  expect(minimal([5, 4, 3, 2, 1])).toEqual(3);
+  expect(minimal([7, 7, 7, 7, 7, 0])).toEqual(7);
+  expect(minimal([25, 32, 47, 1, 3, 0.2, 1])).toEqual(1.2);
+  expect(minimal([25, 32, 47, 1, 3, 0.2, 1, 'string'])).toEqual(1.2);
+});
 
-
-
+test('lastWordLength', () => {
+  expect(lastWordLength('sum of two minimal numbers in array')).toEqual(5);
+  expect(lastWordLength('')).toEqual(0);
+  expect(lastWordLength('sum sum   ')).toEqual(3);
+});
+test('CompareVersion', () => {
+  expect(compareVersion('1.1.1','1.1.1')).toEqual(0);
+  expect(compareVersion('1.1.0','1.1.1')).toEqual(-1);
+  expect(compareVersion('1.2.0','1.1.12')).toEqual(1);
+  expect(compareVersion('0.2.0','0.1.57')).toEqual(1);
+});
 
 // node --experimental-vm-modules node_modules/jest/bin/jest.js
