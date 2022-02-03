@@ -4,6 +4,7 @@ import {
 import  lastWordLength  from '../Arrays/last-word-length';
 import  compareVersion  from '../Arrays/compare-semver';
 import isContinuousSequence from '../Arrays/isContinuousSequence';
+import chunk from '../Arrays/chunk';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -161,5 +162,23 @@ describe('isContinuousSequence', () => {
     expect(isContinuousSequence([0, 1, 2, 3])).toBeTruthy();
     expect(isContinuousSequence([-5, -4, -3])).toBeTruthy();
     expect(isContinuousSequence([10, 11, 12, 13])).toBeTruthy();
+  });
+});
+describe('Chunk', () => {
+  it('should works', () => {
+    const result1 = chunk(['a', 'b', 'c', 'd'], 2);
+    expect(result1).toEqual([['a', 'b'], ['c', 'd']]);
+
+    const result2 = chunk(['a', 'b', 'c', 'd'], 3);
+    expect(result2).toEqual([['a', 'b', 'c'], ['d']]);
+
+    const result3 = chunk([], 4);
+    expect(result3).toEqual([]);
+
+    const result4 = chunk(['a'], 2);
+    expect(result4).toEqual([['a']]);
+
+    const result5 = chunk(['a', 'b', 'c', 'd', 'e', 'f'], 2);
+    expect(result5).toEqual([['a', 'b'], ['c', 'd'], ['e', 'f']]);
   });
 });
