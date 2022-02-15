@@ -1,12 +1,12 @@
 ---
-plugins: ["jest"]
+plugins: ["jest", "prettier"]
 env:
   node: true
   es2020: true
   jest/globals: true
 
 extends:
-  - 'airbnb-base'
+  - "airbnb-base"
 
 parserOptions:
   ecmaVersion: 11
@@ -19,5 +19,3 @@ rules:
   jest/no-identical-title: "error"
   jest/prefer-to-have-length: "warn"
   jest/valid-expect: "error"
-  
-  

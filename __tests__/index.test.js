@@ -3,7 +3,7 @@ import {
 } from '../index';
 import  lastWordLength  from '../Arrays/last-word-length';
 import  compareVersion  from '../Arrays/compare-semver';
-import isContinuousSequence from '../Arrays/isContinuousSequence';
+import isContinuousSequence from '../Arrays/is-continuous-sequence';
 import chunk from '../Arrays/chunk';
 import calcInPolishNotation from '../Arrays/reverse-polish-notation'
 
