@@ -5,7 +5,9 @@ import  lastWordLength  from '../Arrays/last-word-length';
 import  compareVersion  from '../Arrays/compare-semver';
 import isContinuousSequence from '../Arrays/is-continuous-sequence';
 import chunk from '../Arrays/chunk';
-import calcInPolishNotation from '../Arrays/reverse-polish-notation'
+import calcInPolishNotation from '../Arrays/reverse-polish-notation';
+import summaryRanges from '../Arrays/summary-ranges';
+import Node from '../Object-oriented-Programming/binary-tree-search'
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -192,4 +194,73 @@ test('reverse polish notation', () => {
   expect(calcInPolishNotation([3, 0, '/', 2, '+'])).toBe(null);
   expect(calcInPolishNotation([7, 12, 2, '/', '-'])).toBe(1);
   expect(calcInPolishNotation([8, 6, 2, '-', '/'])).toBe(2);
+});
+
+
+test('compare version', () => {
+  expect(summaryRanges([])).toEqual([]);
+  expect(summaryRanges([1])).toEqual([]);
+  expect(summaryRanges([1, 2, 3])).toEqual(['1->3']);
+  expect(summaryRanges([8, 3, 1, 12, 2, 5])).toEqual([]);
+  expect(summaryRanges([8, 3, 1, 2, 3])).toEqual(['1->3']);
+  expect(summaryRanges([0, 1, 2, 4, 5, 7])).toEqual(['0->2', '4->5']);
+  expect(summaryRanges([1, 1, 3, 4, 5, -6, 8, 9, 10, 12, 14, 14])).toEqual(['3->5', '8->10']);
+  expect(summaryRanges([110, 111, 112, 111, -5, -4, -2, -3, -4, -5])).toEqual(['110->112', '-5->-4']);
+});
+
+describe('Binary tree', () => {
+  test('getters', () => {
+    const tree = new Node(9, new Node(4), new Node(17));
+
+    expect(tree.getKey()).toBe(9);
+    expect(tree.getLeft().getKey()).toBe(4);
+    expect(tree.getRight().getKey()).toBe(17);
+  });
+
+  test('empty tree', () => {
+    const tree = new Node();
+
+    expect(tree.getKey()).toBeNull();
+    expect(tree.getLeft()).toBeNull();
+    expect(tree.getRight()).toBeNull();
+  });
+
+  test('search', () => {
+    const expected1 = new Node(5);
+    const expected2 = new Node(22, new Node(20), null);
+    const tree = new Node(9,
+      new Node(4,
+        new Node(3),
+        new Node(6,
+          expected1,
+          new Node(7))),
+      new Node(17,
+        null,
+        expected2));
+
+    expect(tree.search(5)).toBe(expected1);
+    expect(tree.search(22)).toBe(expected2);
+    expect(tree.search(35)).toBeNull();
+    expect(tree.search(2)).toBeNull();
+  });
+
+  test('search algorithm', () => {
+    const tree = new Node(9,
+      new Node(4,
+        new Node(6,
+          new Node(5),
+          new Node(7)),
+        new Node(3)),
+      new Node(17,
+        null,
+        new Node(22,
+          null,
+          new Node(20))));
+
+    expect(tree.search(5)).toBeNull();
+    expect(tree.search(7)).toBeNull();
+    expect(tree.search(6)).toBeNull();
+    expect(tree.search(4).getKey()).toBe(4);
+    expect(tree.search(22).getKey()).toBe(22);
+  });
 });
