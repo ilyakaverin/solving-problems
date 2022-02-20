@@ -1,5 +1,5 @@
 import {
-  isPalindrome, apply, flip, magic, PseudoRandom, isValid, twoSum, maxSubArray, minimal,
+  isPalindrome, apply, flip, magic, isValid, twoSum, maxSubArray, minimal,
 } from '../index';
 import  lastWordLength  from '../Arrays/last-word-length';
 import  compareVersion  from '../Arrays/compare-semver';
@@ -7,7 +7,8 @@ import isContinuousSequence from '../Arrays/is-continuous-sequence';
 import chunk from '../Arrays/chunk';
 import calcInPolishNotation from '../Arrays/reverse-polish-notation';
 import summaryRanges from '../Arrays/summary-ranges';
-import Node from '../Object-oriented-Programming/binary-tree-search'
+import Node from '../Object-oriented-Programming/binary-tree-search';
+import { PseudoRandom } from '../Object-oriented-Programming/random-integer-generator';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
