@@ -9,7 +9,8 @@ import calcInPolishNotation from '../Arrays/reverse-polish-notation';
 import summaryRanges from '../Arrays/summary-ranges';
 import Node from '../Object-oriented-Programming/binary-tree-search';
 import { PseudoRandom } from '../Object-oriented-Programming/random-integer-generator';
-import nrzi from '../functions/NRZI'
+import nrzi from '../Functions/NRZI';
+import balancedStringSplit from '../leetcode/greedyAlgorithms/balancedStringSplit';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -291,4 +292,13 @@ describe('NRZI', () => {
     const result4 = nrzi('|¯|___|¯¯¯¯¯|___|¯|_|¯');
     expect(result4).toEqual('110010000100111');
   });
+});
+
+test('balancedStringSplit', () => {
+  
+  expect(balancedStringSplit("RLRRLLRLRL")).toBe(4);
+  expect(balancedStringSplit("RLLLLRRRLR")).toBe(3);
+  expect(balancedStringSplit("LLLLRRRR")).toBe(1);
+  expect(balancedStringSplit("")).toBe(0);
+
 });
