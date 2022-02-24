@@ -1,5 +1,5 @@
 import {
-  isPalindrome, apply, flip, magic, isValid, twoSum, maxSubArray, minimal,
+  isPalindrome, apply, flip, magic, isValid, twoSum, minimal,
 } from '../index';
 import  lastWordLength  from '../Arrays/last-word-length';
 import  compareVersion  from '../Arrays/compare-semver';
@@ -11,6 +11,7 @@ import Node from '../Object-oriented-Programming/binary-tree-search';
 import { PseudoRandom } from '../Object-oriented-Programming/random-integer-generator';
 import nrzi from '../Functions/NRZI';
 import balancedStringSplit from '../leetcode/greedyAlgorithms/balancedStringSplit';
+import maxSubArray from '../leetcode/other/maxSubArray';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -300,5 +301,12 @@ test('balancedStringSplit', () => {
   expect(balancedStringSplit("RLLLLRRRLR")).toBe(3);
   expect(balancedStringSplit("LLLLRRRR")).toBe(1);
   expect(balancedStringSplit("")).toBe(0);
+
+});
+test('maxSubArray', () => {
+  
+  expect(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])).toBe(6);
+  expect(maxSubArray([1])).toBe(1);
+  expect(maxSubArray([5,4,-1,7,8])).toBe(23);
 
 });
