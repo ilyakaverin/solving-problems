@@ -13,6 +13,7 @@ import nrzi from '../Functions/NRZI';
 import balancedStringSplit from '../leetcode/greedyAlgorithms/balancedStringSplit';
 import maxSubArray from '../leetcode/other/maxSubArray';
 import majorityElement from '../leetcode/other/majorityElement';
+import shuffleArray from '../leetcode/other/shuffleArray';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -327,4 +328,11 @@ test('majorityElement', () => {
 
 });
 
+test('shuffleArray', () => {
+  
+  expect(shuffleArray([2,5,1,3,4,7], 3)).toEqual([2,3,5,4,1,7] );
+  expect(shuffleArray([1,2,3,4,4,3,2,1], 4)).toEqual([1,4,2,3,3,2,4,1]);
+  expect(shuffleArray([1,1,2,2],2)).toEqual([1,2,1,2]);
+
+});
 
