@@ -12,6 +12,7 @@ import { PseudoRandom } from '../Object-oriented-Programming/random-integer-gene
 import nrzi from '../Functions/NRZI';
 import balancedStringSplit from '../leetcode/greedyAlgorithms/balancedStringSplit';
 import maxSubArray from '../leetcode/other/maxSubArray';
+import majorityElement from '../leetcode/other/majorityElement';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -318,3 +319,12 @@ test('serializeOrder', () => {
   expect(serializeOrder([-2, -1, 0, 1 ,3,5])).toEqual([ '-2-1', 3, 5 ]);
 
 });
+test('majorityElement', () => {
+  
+  expect(majorityElement([3,2,3])).toEqual(3);
+  expect(majorityElement([2,2,1,1,1,2,2])).toEqual(2);
+  expect(majorityElement([3,3,4])).toEqual(3);
+
+});
+
+
