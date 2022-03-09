@@ -14,6 +14,7 @@ import balancedStringSplit from '../leetcode/greedyAlgorithms/balancedStringSpli
 import maxSubArray from '../leetcode/other/maxSubArray';
 import majorityElement from '../leetcode/other/majorityElement';
 import shuffleArray from '../leetcode/other/shuffleArray';
+import numIdenticalPairs from '../leetcode/other/numIdenticalPairs';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -335,4 +336,12 @@ test('shuffleArray', () => {
   expect(shuffleArray([1,1,2,2],2)).toEqual([1,2,1,2]);
 
 });
+test('numIdenticalPairs', () => {
+  
+  expect(numIdenticalPairs([1,2,3,1,1,3])).toEqual(4);
+  expect(numIdenticalPairs([1,1,1,1])).toEqual(6);
+  expect(numIdenticalPairs([1,2,3])).toEqual(0);
+
+});
+
 
