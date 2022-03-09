@@ -166,3 +166,26 @@ export const minimal = (array) => {
   }
   return min + min2;
 };
+export const serializeOrder = (array) => {
+  let result = [];
+  let tail = array[0];
+  let head;
+
+  for(let i = 0; i < array.length; i+= 1) {
+
+    if(array[i] - array[i + 1] === -1) {
+      head = array[i];
+    } else {
+      head = array[i]
+      if(tail !== head) {
+        result.push(`${tail}-${head}`);
+      } else {
+        result.push(tail);
+      }
+      tail = array[i + 1]
+      
+      
+    }
+  }
+  return result
+} // fora soft problem

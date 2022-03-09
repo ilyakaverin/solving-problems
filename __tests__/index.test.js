@@ -1,5 +1,5 @@
 import {
-  isPalindrome, apply, flip, magic, isValid, twoSum, minimal,
+  isPalindrome, apply, flip, magic, isValid, twoSum, minimal, serializeOrder
 } from '../index';
 import  lastWordLength  from '../Arrays/last-word-length';
 import  compareVersion  from '../Arrays/compare-semver';
@@ -308,5 +308,13 @@ test('maxSubArray', () => {
   expect(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])).toBe(6);
   expect(maxSubArray([1])).toBe(1);
   expect(maxSubArray([5,4,-1,7,8])).toBe(23);
+
+});
+
+test('serializeOrder', () => {
+  
+  expect(serializeOrder([1,2,3,5,7,9,10,11,12,13,14,15])).toEqual([ '1-3', 5, 7, '9-15' ]);
+  expect(serializeOrder([1])).toEqual([1]);
+  expect(serializeOrder([-2, -1, 0, 1 ,3,5])).toEqual([ '-2-1', 3, 5 ]);
 
 });
