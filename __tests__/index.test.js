@@ -15,6 +15,8 @@ import maxSubArray from '../leetcode/other/maxSubArray';
 import majorityElement from '../leetcode/other/majorityElement';
 import shuffleArray from '../leetcode/other/shuffleArray';
 import numIdenticalPairs from '../leetcode/other/numIdenticalPairs';
+import minimumSum from '../leetcode/other/minimumSum';
+import decompressRLElist from '../leetcode/other/decompressRLElist';
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
@@ -343,5 +345,22 @@ test('numIdenticalPairs', () => {
   expect(numIdenticalPairs([1,2,3])).toEqual(0);
 
 });
+test('minimumSum', () => {
+  
+  expect(minimumSum(2932)).toEqual(52);
+  expect(minimumSum(4009)).toEqual(13);
+
+});
+
+test('decompressRLElist', () => {
+  
+  expect(decompressRLElist([1,2,3,4])).toEqual([2,4,4,4]);
+  expect(decompressRLElist([1,1,2,3])).toEqual([1,3,3]);
+
+});
+
+
+
+
 
 
