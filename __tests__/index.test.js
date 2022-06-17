@@ -17,6 +17,141 @@ import shuffleArray from '../leetcode/other/shuffleArray';
 import numIdenticalPairs from '../leetcode/other/numIdenticalPairs';
 import minimumSum from '../leetcode/other/minimumSum';
 import decompressRLElist from '../leetcode/other/decompressRLElist';
+import reverse, { NodeList } from '../Polymorphism/reverseLinkedList';
+import getLinks from '../Polymorphism/dispatchByKeys';
+import randomWords from 'random-words';
+import stringify from '../Polymorphism/dispatchByFunction';
+
+describe('stringify', () => {
+  it('test 1', () => {
+    const tag = {
+      name: 'hr',
+      class: 'px-3',
+      id: 'myid',
+      tagType: 'single',
+    };
+    const html = stringify(tag);
+
+    const expected = '<hr class="px-3" id="myid">';
+    expect(html).toBe(expected);
+  });
+
+  it('test 2', () => {
+    const tag = {
+      name: 'p',
+      tagType: 'pair',
+      body: 'text',
+    };
+    const html = stringify(tag);
+
+    const expected = '<p>text</p>';
+    expect(html).toBe(expected);
+  });
+
+  it('test 3', () => {
+    const tag = {
+      name: 'div',
+      tagType: 'pair',
+      body: 'text2',
+      id: 'wow',
+    };
+    const html = stringify(tag);
+
+    const expected = '<div id="wow">text2</div>';
+    expect(html).toBe(expected);
+  });
+
+  it('test random attribute', () => {
+    const randomAttr = randomWords();
+    const tag = {
+      name: 'div',
+      tagType: 'pair',
+      body: 'text2',
+      id: 'wow',
+      [randomAttr]: 'value',
+    };
+    const html = stringify(tag);
+
+    const expected = `<div id="wow" ${randomAttr}="value">text2</div>`;
+    expect(html).toBe(expected);
+  });
+});
+
+describe('getLinks', () => {
+  it('test 1', () => {
+    const tags = [];
+    const links = getLinks(tags);
+
+    const expected = [];
+    expect(links).toEqual(expected);
+  });
+
+  it('test 2', () => {
+    const tags = [
+      { name: 'p' },
+      { name: 'a', href: 'hexlet.io' },
+      { name: 'img', src: 'hexlet.io/assets/logo.png' },
+    ];
+    const links = getLinks(tags);
+
+    const expected = [
+      'hexlet.io',
+      'hexlet.io/assets/logo.png',
+    ];
+    expect(links).toEqual(expected);
+  });
+
+  it('test 3', () => {
+    const tags = [
+      { name: 'img', src: 'hexlet.io/assets/logo.png' },
+      { name: 'div' },
+      { name: 'link', href: 'hexlet.io/assets/style.css' },
+      { name: 'h1' },
+    ];
+    const links = getLinks(tags);
+
+    const expected = [
+      'hexlet.io/assets/logo.png',
+      'hexlet.io/assets/style.css',
+    ];
+    expect(links).toEqual(expected);
+  });
+
+  it('test 4', () => {
+    const tags = [
+      { name: 'invalidTag', src: 'hexlet.io/assets/invalid.png' },
+      { name: 'img', src: 'hexlet.io/assets/logo.png' },
+      { name: 'div' },
+      { name: 'link', href: 'hexlet.io/assets/style.css' },
+      { name: 'h1' },
+    ];
+    const links = getLinks(tags);
+
+    const expected = [
+      'hexlet.io/assets/logo.png',
+      'hexlet.io/assets/style.css',
+    ];
+    expect(links).toEqual(expected);
+  });
+});
+
+
+
+describe('reverseLinkedList', () => {
+  it('test 1', () => {
+    const list = new NodeList(true);
+    const reversedList = reverse(list);
+    expect(reversedList).toEqual(list);
+  });
+
+  it('test 2', () => {
+    const numbers = new NodeList(1, new NodeList(2, new NodeList(3)));
+    const reversedNumbers = reverse(numbers);
+    expect(reversedNumbers.getValue()).toBe(3);
+    expect(reversedNumbers.getNext().getValue()).toBe(2);
+    expect(reversedNumbers.getNext().getNext().getValue()).toBe(1);
+  });
+});
 
 test('isPalindrome', () => {
   expect(isPalindrome('a')).toBe(true);
