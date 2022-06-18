@@ -37,3 +37,15 @@ export default (linkedList) =>  {
   }
     return arrayToList(reversed)
 }
+
+const REFACTORED_REVERSE_LINKEDLIST = (list) => {
+    let reversedList = null;
+    let current = list;
+  
+    while (current) {
+
+      reversedList = new Node(current.getValue(), reversedList);
+      current = current.getNext();
+    }
+    return reversedList;
+  }

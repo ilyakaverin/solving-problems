@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "eslint-plugin-jest": "^25.2.4",
+    "lodash": "^4.17.21",
     "random-words": "^1.2.0"
   }
 }
